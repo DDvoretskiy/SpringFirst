@@ -1,8 +1,7 @@
 package by.izone.spring.core.loggers;
 
-import by.izone.spring.core.beans.Event;
-import org.apache.commons.io.FileUtils;
 
+import by.izone.spring.core.beans.Event;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,10 +14,10 @@ public class FileEventLogger implements EventLogger {
         this.fileName = fileName;
     }
 
-    private void init() {
+    void init() {
         if (!Files.isWritable(Paths.get(fileName))) {
             System.out.println("невозможно писать в файл");
-            System.exit(0);
+
         }
     }
 

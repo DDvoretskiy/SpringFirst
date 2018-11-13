@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Event {
-    private AtomicInteger count = new AtomicInteger(0);
+    private static final AtomicInteger count = new AtomicInteger(0);
+
     private int id;
     private String msg;
     private LocalDate date;
@@ -25,9 +26,12 @@ public class Event {
         this.msg = msg;
     }
 
+    public int getId() {
+        return id;
+    }
     @Override
     public String toString() {
-        return "id: "+id+"\t"+DateTimeUtil.toString(date)+"\t"+msg+"\n";
+        return "id: " + id + "\t" + DateTimeUtil.toString(date) + "\t" + msg + "\n";
     }
 
 }

@@ -2,15 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="logger.xml"/>
     <bean id="client" class="by.izone.spring.core.beans.Client">
         <constructor-arg value="1"/>
         <constructor-arg value="Ivan Petrov"/>
-
-    </bean>
-
-    <bean id="consoleEventLogger" class="by.izone.spring.core.loggers.ConsoleEventLogger"/>
-    <bean id="fileEventLogger" class = "by.izone.spring.core.loggers.FileEventLogger">
-        <constructor-arg value= "d:\test2.txt"/>
+        <property name="greeting" value="Zig hile!"/>
     </bean>
 
     <bean id="event" class="by.izone.spring.core.beans.Event" scope="prototype">
@@ -21,6 +17,12 @@
 
     <bean id="app" class="by.izone.spring.core.App">
         <constructor-arg ref="client"/>
-        <constructor-arg ref="consoleEventLogger"/>
+        <constructor-arg ref="cashFileEventLogger"/>
+        <constructor-arg>
+            <map>
+                <entry key= "INFO" value-ref="consoleEventLogger"/>
+                <entry key="ERROR" value-ref="combinedEventLogger"/>
+            </map>
+        </constructor-arg>
     </bean>
 </beans>
