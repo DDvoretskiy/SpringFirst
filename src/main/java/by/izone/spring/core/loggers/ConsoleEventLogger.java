@@ -1,8 +1,10 @@
 package by.izone.spring.core.loggers;
 
-public class ConsoleEventLogger implements EventLogger {
+import by.izone.spring.core.beans.Event;
 
-    public void logEvent(String logEvent) {
-        System.out.println(logEvent);
+public class ConsoleEventLogger implements EventLogger {
+    @Override
+    public void logEvent(Event event) {
+        System.out.print(event);
     }
 }

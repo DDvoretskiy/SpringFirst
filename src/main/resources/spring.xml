@@ -5,15 +5,22 @@
     <bean id="client" class="by.izone.spring.core.beans.Client">
         <constructor-arg value="1"/>
         <constructor-arg value="Ivan Petrov"/>
+
     </bean>
 
-    <bean id="eventLogger" class="by.izone.spring.core.loggers.ConsoleEventLogger">
+    <bean id="consoleEventLogger" class="by.izone.spring.core.loggers.ConsoleEventLogger"/>
+    <bean id="fileEventLogger" class = "by.izone.spring.core.loggers.FileEventLogger">
+        <constructor-arg value= "d:\test2.txt"/>
+    </bean>
 
+    <bean id="event" class="by.izone.spring.core.beans.Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.time.LocalDateTime" factory-method="now"/>
+        </constructor-arg>
     </bean>
 
     <bean id="app" class="by.izone.spring.core.App">
         <constructor-arg ref="client"/>
-        <constructor-arg ref="eventLogger"/>
+        <constructor-arg ref="consoleEventLogger"/>
     </bean>
 </beans>
-
