@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-@Component
+import static java.nio.file.StandardOpenOption.APPEND;
+
+@Component("fileEventLogger")
 public class FileEventLogger implements EventLogger {
 
     private String fileName;
@@ -39,7 +41,7 @@ public class FileEventLogger implements EventLogger {
         String content = event.toString();
 
         try {
-            Files.write(Paths.get(fileName), content.getBytes());
+            Files.write(Paths.get(fileName), content.getBytes(),APPEND);
         } catch (IOException e) {
             e.printStackTrace();
         }

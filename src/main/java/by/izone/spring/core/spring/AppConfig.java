@@ -17,13 +17,12 @@ public class AppConfig {
     private Environment environment;
     @Bean
     public Client client(){
-       Client client = new Client(environment.getRequiredProperty("id"),environment.getRequiredProperty("name"));
-       client.setGreeting(environment.getProperty("greeting"));
+       Client client = new Client(environment.getRequiredProperty("id1"),environment.getRequiredProperty("name1"));
+       client.setGreeting(environment.getProperty("greeting1"));
        return client;
     }
     @Bean
     @Scope("prototype")
-
     public Event event(){
         return new Event(LocalDateTime.now());
     }

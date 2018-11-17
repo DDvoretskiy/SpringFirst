@@ -8,7 +8,9 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
-@Component
+
+@Component("cacheFileEventLogger")
+
 public class CasheFileEventLogger extends FileEventLogger {
     @Value("${cache.size:5}")
     private int casheSize;

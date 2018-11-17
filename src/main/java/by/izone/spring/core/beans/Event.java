@@ -11,7 +11,9 @@ public class Event {
 
     private int id;
     private String msg;
+
     private LocalDate date;
+
 
     public Event(LocalDateTime date) {
         this.date = date.toLocalDate();
