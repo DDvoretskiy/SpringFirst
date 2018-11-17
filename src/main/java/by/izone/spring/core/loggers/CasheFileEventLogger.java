@@ -4,15 +4,19 @@ import by.izone.spring.core.beans.Event;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 @Component
-public class CashFileEventLogger extends FileEventLogger {
-    @Value("3")
+public class CasheFileEventLogger extends FileEventLogger {
+    @Value("${cache.size:5}")
     private int casheSize;
     private List<Event> cash = new ArrayList<>();
 
-    public CashFileEventLogger(String fileName,int casheSize) {
+    public CasheFileEventLogger() {
+    }
+    public CasheFileEventLogger(String fileName, int casheSize) {
         super(fileName);
         this.casheSize = casheSize;
 
@@ -27,11 +31,12 @@ public class CashFileEventLogger extends FileEventLogger {
         }
     }
 
-    @Override
+    @PostConstruct
     void init() {
         super.init();
     }
 
+    @PreDestroy
     private void destroy(){
         if(!cash.isEmpty()){
             cash.forEach(super::logEvent);

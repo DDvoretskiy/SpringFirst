@@ -1,11 +1,12 @@
 package by.izone.spring.core.loggers;
 
 import by.izone.spring.core.beans.Event;
+import org.springframework.stereotype.Component;
 
 
 import java.util.Collection;
 
-
+@Component
 public class CombinedEventLogger implements EventLogger  {
 
     private final Collection<EventLogger> loggers;

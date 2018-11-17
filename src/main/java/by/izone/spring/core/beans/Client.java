@@ -1,13 +1,16 @@
 package by.izone.spring.core.beans;
 
 public class Client {
+
     private String id;
     private String fullName;
 
     public String getGreeting() {
         return greeting;
     }
+    public Client(){
 
+    }
     public void setGreeting(String greeting) {
         this.greeting = greeting;
     }
